@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ICustomEvent } from '../list-item/list-item.component';
 
 @Component({
   selector: 'app-list',
@@ -20,7 +21,17 @@ export class ListComponent {
 
   showLastName = true;
 
+  selectedUserIndex: null | number = null;
+
   handliClickEvent(){
     this.showLastName = !this.showLastName;
+  }
+
+  listItemClickHandler(index: number){
+    this.selectedUserIndex = index;
+  }
+
+  customEventHandler($event: ICustomEvent){
+console.log($event.test)
   }
 }

@@ -1,4 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+
+export interface ICustomEvent {
+  test: number;
+}
 
 @Component({
   selector: 'app-list-item',
@@ -7,7 +11,14 @@ import { Component, Input } from '@angular/core';
 })
 export class ListItemComponent {
 
-  @Input() user!: { firstName:string; lastName:string; }
+  @Input() user!: { firstName: string; lastName: string; }
   @Input() showLastName!: boolean;
+
+  @Output() customEvent = new EventEmitter<ICustomEvent>();
+
+  selectClickHandler($event: MouseEvent) {
+    $event.stopPropagation();
+    this.customEvent.emit({ test: 123 });
+  }
 
 }
