@@ -7,16 +7,19 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
 @NgModule({
+  // Template specific items
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, //this includes commonModule
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+
+  ], //used for dep injection
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  myProp = 'Hello world';
+
+  constructor(){
+    setTimeout(() => {
+      this.myProp = 'Hello Other World'
+    }, 2000)
+  }
 }
