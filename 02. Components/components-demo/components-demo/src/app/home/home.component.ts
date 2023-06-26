@@ -25,4 +25,10 @@ export class HomeComponent {
       lastName: 'Petrov'
     }
   ];
+
+  showLastName = true;
+
+  handliClickEvent(){
+    this.showLastName = !this.showLastName;
+  }
 }
