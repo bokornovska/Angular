@@ -1,12 +1,3 @@
 <h1>This is called interpolation</h1>
 <p id="title">HOME works! {{myProp}}</p>
 
-<button (click)="handliClickEvent()">Toggle last name</button>
-
-
-<div id="list-container">
-    <div *ngFor="let user of users" class="list-item">
-        <ng-container *ngIf="false">{{user.firstName}} </ng-container>
-       <span>{{user.firstName}}</span>  <span *ngIf="showLastName"> {{user.lastName}}</span>
-    </div>
-</div>

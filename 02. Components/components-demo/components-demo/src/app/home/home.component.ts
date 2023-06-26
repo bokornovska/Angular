@@ -15,20 +15,5 @@ export class HomeComponent {
     }, 2000)
   }
 
-  users = [
-    {
-      firstName: 'Ivan',
-      lastName: 'Ivanov'
-    },
-    {
-      firstName: 'Peter',
-      lastName: 'Petrov'
-    }
-  ];
-
-  showLastName = true;
-
-  handliClickEvent(){
-    this.showLastName = !this.showLastName;
-  }
+  
 }

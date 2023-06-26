@@ -1,1 +1,11 @@
+<h1>Title: {{title}}</h1>
 <app-home></app-home>
+<!-- const titleInput = document.createElement('input')
+     const btn = document.createElement('button')
+     btn.addEventListner('click', ($event) => {
+        changeTitleHandler(titleInput.value)
+     })
+-->
+<input #titleInput type="text">
+<button (click)="changeTitleHandler(titleInput.value)">Change title</button>
+<app-list></app-list>

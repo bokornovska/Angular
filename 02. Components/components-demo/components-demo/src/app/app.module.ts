@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ListComponent } from './list/list.component';
+import { ListItemComponent } from './list-item/list-item.component';
 
 @NgModule({
   // Template specific items
@@ -14,6 +15,7 @@ import { ListComponent } from './list/list.component';
     HomeComponent,
     AboutComponent,
     ListComponent,
+    ListItemComponent,
   ],
   imports: [
     BrowserModule, //this includes commonModule
