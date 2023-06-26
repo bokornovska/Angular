@@ -1,2 +1,9 @@
 <h1>This is called interpolation</h1>
 <p id="title">HOME works! {{myProp}}</p>
+
+
+<div id="list-container">
+    <div *ngFor="let user of users" class="list-item">
+        {{user.firstName}} {{user.lastName}}
+    </div>
+</div>

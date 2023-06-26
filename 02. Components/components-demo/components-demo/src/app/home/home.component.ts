@@ -14,4 +14,15 @@ export class HomeComponent {
       this.myProp = 'Hello Other World'
     }, 2000)
   }
+
+  users = [
+    {
+      firstName: 'Ivan',
+      lastName: 'Ivanov'
+    },
+    {
+      firstName: 'Peter',
+      lastName: 'Petrov'
+    }
+  ];
 }
