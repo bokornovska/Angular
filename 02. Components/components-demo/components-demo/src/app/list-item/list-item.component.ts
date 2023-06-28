@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnInit, OnDestroy } from '@angular/core';
 
 export interface ICustomEvent {
   test: number;
@@ -9,19 +9,27 @@ export interface ICustomEvent {
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.css']
 })
-export class ListItemComponent implements OnInit{
+export class ListItemComponent implements OnInit, OnDestroy {
 
   @Input() user!: { firstName: string; lastName: string; }
   @Input() showLastName!: boolean;
 
   @Output() customEvent = new EventEmitter<ICustomEvent>();
 
+  intervalId!: number;
+
   constructor() {
     console.log(this.user)
   }
 
   ngOnInit() {
-    console.log(this.user)
+    this.intervalId = setInterval(() => {
+
+    }, 5000) as unknown as number;
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId)
   }
 
   selectClickHandler($event: MouseEvent) {
