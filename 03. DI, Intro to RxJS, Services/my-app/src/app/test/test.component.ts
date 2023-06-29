@@ -8,7 +8,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class TestComponent implements OnInit {
 
-  @Input() users!: { name: string }[]; 
+  @Input() users!: { name: string }[];
 
   constructor() {
 
@@ -18,3 +18,20 @@ export class TestComponent implements OnInit {
 
   }
 }
+
+// Dependency injection
+class Wallet {
+  constructor(private amount: number) {
+
+  }
+}
+
+class Person {
+
+  constructor(private wallet: Wallet) {
+
+  }
+}
+
+const w = new Wallet(200);
+const p = new Person(w)
