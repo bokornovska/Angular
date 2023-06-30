@@ -53,13 +53,13 @@ const injector = {
       throw new Error('Value not found in injector')
     }
     // return result;
-    if((provider as ValueProvider).useValue){
+    if ((provider as ValueProvider).useValue) {
       return (provider as ValueProvider).useValue;
     }
-    if((provider as ClassProvider).useClass){
+    if ((provider as ClassProvider).useClass) {
       let instance = this.instances.get(provider.provide);
 
-      if(instance){ return instance};
+      if (instance) { return instance };
       instance = new (provider as ClassProvider).useClass();
       this.instances.set(provider.provide, instance);
       return instance;
@@ -84,8 +84,17 @@ class Person {
   }
 }
 
-// injector.provide(Wallet, Wallet);
-// injector.provide(amount, 200);
+class Employee {
+  wallet:Wallet;
+  constructor(injector: Injector) {
+    this.wallet = injector.get(Wallet)
+  }
+}
+
+injector.provide({ provide: Wallet, useClass: Wallet });
+injector.provide({ provide: amount, useValue: amount });
 
 const w = new Wallet(injector);
 const p = new Person(injector);
+const e = new Employee(injector);
+
