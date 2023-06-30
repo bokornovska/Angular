@@ -51,3 +51,11 @@ interval(3000).pipe(
     map(x => x + 1)
 ).subscribe(console.log)
 
+
+setTimeout(() => {
+    const sub = stream$.subscribe({
+        next: (x) => console.log(x),
+        error: (err) => console.log(err),
+        complete: () => console.log('Observable completed')
+    })
+})
