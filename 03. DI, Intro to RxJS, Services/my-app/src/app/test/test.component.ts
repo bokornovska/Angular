@@ -25,18 +25,67 @@ export class TestComponent implements OnInit {
 }
 
 // Dependency injection
+
+interface ClassProvider {
+  provide: any;
+  useClass?: any;
+
+};
+
+interface ValueProvider {
+  provide: any;
+  useValue: any;
+}
+
+type Provider = ClassProvider | ValueProvider;
+
+const injector = {
+  collection: new Map(),
+  instances: new Map(),
+  provide(provider: Provider) {
+    this.collection.set(provider.provide, provider)
+  },
+  get(key: any, defaultValue?: any): any {
+    const provider = this.collection.get(key) as Provider;
+
+    if (!provider) {
+      if (defaultValue) { return defaultValue; }
+      throw new Error('Value not found in injector')
+    }
+    // return result;
+    if((provider as ValueProvider).useValue){
+      return (provider as ValueProvider).useValue;
+    }
+    if((provider as ClassProvider).useClass){
+      let instance = this.instances.get(provider.provide);
+
+      if(instance){ return instance};
+      instance = new (provider as ClassProvider).useClass();
+      this.instances.set(provider.provide, instance);
+      return instance;
+
+    }
+  }
+};
+
+const amount = Symbol('Amount');
+type Injector = typeof injector;
+
 class Wallet {
-  constructor(private amount: number) {
-
+  private amount: number;
+  constructor(injector: Injector) {
+    this.amount = injector.get(amount, 0);
   }
 }
-
 class Person {
-
-  constructor(private wallet: Wallet) {
-
+  wallet: Wallet;
+  constructor(injector: Injector) {
+    this.wallet = injector.get(Wallet)
   }
 }
 
-const w = new Wallet(200);
-const p = new Person(w)
+// injector.provide(Wallet, Wallet);
+// injector.provide(amount, 200);
+
+const w = new Wallet(injector);
+const p = new Person(injector);
