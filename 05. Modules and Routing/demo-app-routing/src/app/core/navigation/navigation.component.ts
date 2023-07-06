@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -8,11 +8,11 @@ import {Router} from '@angular/router';
 })
 export class NavigationComponent {
 
-  constructor(private router: Router){
+  constructor(private router: Router) {
 
   }
 
-  navigateTo(path:string):void{
-    this.router.navigate();
+  navigateTo(path: string): void {
+    this.router.navigate([path]);
   }
 }
