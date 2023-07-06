@@ -14,3 +14,13 @@
     align-items: center;
     padding:20px;
 }
+
+.btn-reload{
+    background-color: rgb(87, 87, 135);
+    color:white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top:10px;
+    font-weight: bold;
+
+}
