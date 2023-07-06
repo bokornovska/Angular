@@ -1,4 +1,4 @@
-<p>global-loader works!</p>
-<div class="loader-wrapper">
+<div class="loader-wrapper" *ngIf="!globalLoaderService.isHidden">
+    
     <app-spinner/>
 </div>
