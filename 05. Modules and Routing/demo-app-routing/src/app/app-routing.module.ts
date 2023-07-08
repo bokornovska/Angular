@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+// import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // import { UserListComponent } from './user/user-list/user-list.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
@@ -13,7 +13,6 @@ export const routes: Routes = [
   {
     path: 'todo/list', 
     component: TodoListComponent},
-
 
 ];
 
