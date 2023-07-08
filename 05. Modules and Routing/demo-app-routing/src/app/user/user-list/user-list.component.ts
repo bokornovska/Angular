@@ -17,15 +17,13 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService, private globalLoaderService: GlobalLoaderService) {
 
   }
-
-
   ngOnInit(): void {
     this.loadUsers();
   }
 
   loadUsers():void {
     this.globalLoaderService.showLoader();
-    setTimeout(() => {
+    // setTimeout(() => {
       this.userService.fetchUsers().subscribe({
         next: (users) => {
           this.userList = users;
@@ -37,7 +35,7 @@ export class UserListComponent implements OnInit {
         }
 
       });
-    }, 1000)
+    // }, 1000)
   }
 
   reloadUsersList():void{

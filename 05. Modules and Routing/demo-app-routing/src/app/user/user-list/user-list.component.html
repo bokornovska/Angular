@@ -5,7 +5,8 @@
 <button class="btn-reload"(click)="reloadUsersList()">Reload Users List</button>
 <div class="user-list-wrapper">
 
-    <div *ngFor="let user of userList">
-        <h3>{{user.username}}</h3>
+    <div *ngFor="let user of userList" [routerLink]="['/user', 'detail', user.id]">
+        <h3 class="clickable">{{user.username}} : {{user.id}}</h3>
     </div>
 </div>
+
