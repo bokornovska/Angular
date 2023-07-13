@@ -1,4 +1,5 @@
 <div class="container" *ngIf="theme">
+   
     <!-- theme content  -->
     <div class="theme-content">
 
@@ -38,7 +39,7 @@
             </div>
         </div>
 
-        <div class="answer-comment">
+        <div class="answer-comment" *ngIf="isLogged">
             <p><span>currentUser</span> comment:</p>
             <div class="answer">
                 <form>
