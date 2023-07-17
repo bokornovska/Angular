@@ -12,7 +12,7 @@ export class HighlightOnMoveDirective implements OnInit, OnDestroy {
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) { }
 
-  unsubscribeFromEvents: (() => void)[] = [];
+  // unsubscribeFromEvents: (() => void)[] = [];
 
   ngOnInit(): void {
     console.log(this.elRef);
@@ -20,21 +20,21 @@ export class HighlightOnMoveDirective implements OnInit, OnDestroy {
 
     // this.renderer.setStyle(this.elRef.nativeElement, 'text-decoration', 'underline') //better practice
 
-    this.unsubscribeFromEvents.push(
+    // this.unsubscribeFromEvents.push(
       this.renderer.listen(
         this.elRef.nativeElement,
         'mouseenter',
         this.mouseEnterHandler.bind(this)
       )
-    );
+    // );
 
-    this.unsubscribeFromEvents.push(
+    // this.unsubscribeFromEvents.push(
       this.renderer.listen(
         this.elRef.nativeElement,
         'mouseleave',
         this.mouseLeaveHandler.bind(this)
       )
-    );
+    // );
 
   }
 
@@ -49,6 +49,6 @@ export class HighlightOnMoveDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribeFromEvents.forEach((fn) => fn());
+    // this.unsubscribeFromEvents.forEach((fn) => fn());
   }
 }
