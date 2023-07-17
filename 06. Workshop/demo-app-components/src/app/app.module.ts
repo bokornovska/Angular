@@ -17,7 +17,14 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, ThemesListComponent, PostsListComponent, HomeComponent, WelcomeComponent, NotFoundComponent],
+  declarations: [
+    AppComponent, 
+    MainComponent, 
+    ThemesListComponent, 
+    PostsListComponent, 
+    HomeComponent, 
+    WelcomeComponent, 
+    NotFoundComponent],
   imports: [
     BrowserModule,
     CoreModule,
