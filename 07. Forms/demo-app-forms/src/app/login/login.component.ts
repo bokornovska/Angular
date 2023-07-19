@@ -12,6 +12,10 @@ export class LoginComponent implements OnInit {
 
   //will be rendered only the static content
   ngOnInit(): void {
+  
+  }
+
+  ngAfterViewInit():void{
     this.loginForm?.valueChanges?.subscribe(console.log)
   }
 

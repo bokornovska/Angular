@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.registerForm.get('email')?.valueChanges.subscribe(console.log)
   }
 
   handleSubmit():void {
