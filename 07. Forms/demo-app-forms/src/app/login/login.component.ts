@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   // another way to get the form login without passing it as param to the callback
   @ViewChild('loginForm') loginForm: NgForm | undefined;
 
@@ -19,8 +19,10 @@ export class LoginComponent implements OnInit{
   // ngAfterViewInit():void{
   // }
 
-  submitHandler(form: NgForm): void {
+  submitHandler(): void {
+    if (!this.loginForm) return;
 
+    const form = this.loginForm;
     // if the form is invalid
     if (form.invalid) {
       return;
