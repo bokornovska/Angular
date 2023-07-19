@@ -10,8 +10,9 @@ import { RegisterComponent } from './register/register.component';
 import { MyRouterLinkDirective } from './my-router-link.directive';
 import { MyStructuralDirectiveDirective } from './my-structural-directive.directive';
 import { DirectivesComponent } from './directives/directives.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaxCountDirective } from './max-count.directive';
+
 
 @NgModule({
   declarations: [
@@ -23,12 +24,13 @@ import { MaxCountDirective } from './max-count.directive';
     MyRouterLinkDirective,
     MyStructuralDirectiveDirective,
     DirectivesComponent,
-    MaxCountDirective
+    MaxCountDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule //Template driven form
+    FormsModule, //Template driven form
+    ReactiveFormsModule, //Reactive forms approach
   ],
   providers: [],
   bootstrap: [AppComponent]
