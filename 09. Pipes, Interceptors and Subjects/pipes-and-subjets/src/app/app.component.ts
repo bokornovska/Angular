@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs/internal/observable/interval';
 import { map } from 'rxjs/operators';
+import { UserService } from './user.service';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'pipes-and-subjets';
 
   person = {
@@ -36,4 +37,16 @@ export class AppComponent {
   time$ = interval(1000).pipe(
     map(() => new Date())
   )
+
+  constructor(private userService:UserService){
+
+  }
+  ngOnInit(): void {
+    this.userService.loadUsers().subscribe({
+      next: console.log,
+      error: (err) => {
+        console.error(`Error from app component ${err}`)
+      }
+    });
+  }
 }
