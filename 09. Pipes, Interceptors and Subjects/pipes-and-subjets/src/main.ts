@@ -1,7 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
 
 
 platformBrowserDynamic().bootstrapModule(AppModule)
@@ -36,3 +36,71 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 //   error: (err) => console.error(`Error ${err}`),
 //   complete: () => console.log('Observable completed')
 // })
+
+
+
+// function interval(delay: number, count?: number) {
+
+//   let counter = 0;
+
+//   return new Observable((obs) => {
+
+//     if(counter === count){
+//       obs.complete();
+//       return;
+//     }
+
+//     const i = setInterval(() => {
+//       obs.next(counter++)
+//     }, delay);
+
+//     return () => {
+//       clearInterval(i);
+//     }
+//   })
+// }
+
+// const subscribtion = interval(1000, 8).subscribe({
+//   next: console.log,
+//   error: (err) => console.error(`Error ${err}`),
+//   complete: () => console.log('Observable completed')
+// });
+
+// setTimeout(() => {
+//   subscribtion.unsubscribe();
+// }, 3000)
+
+
+// SUBJECTS
+
+const subj$$ = new Subject();
+
+subj$$.subscribe(console.log); // A
+
+subj$$.next(123); // A
+
+subj$$.subscribe(console.log); // B
+subj$$.subscribe(console.log); // C
+subj$$.next(400); // A, B, C
+
+setTimeout(() => {
+  subj$$.subscribe(console.log); // D
+  subj$$.next(100) // A, B, C, D
+}, 2000)
+
+
+
+// Behavior Seubject
+
+const bSubj$$ = new BehaviorSubject(100);
+bSubj$$.subscribe(console.log);
+
+setTimeout(() => {
+  bSubj$$.subscribe(console.log);
+  bSubj$$.next(200);
+
+  setTimeout(() => {
+    bSubj$$.subscribe(console.log);
+    bSubj$$.next(300);
+  })
+}, 2000)
