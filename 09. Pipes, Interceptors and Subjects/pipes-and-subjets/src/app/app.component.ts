@@ -38,15 +38,24 @@ export class AppComponent implements OnInit{
     map(() => new Date())
   )
 
+  users$ = this.userService.userObs$;
+  isLoadingUsers$ = this.userService.isLoadingUsers$;
+
   constructor(private userService:UserService){
 
   }
   ngOnInit(): void {
-    this.userService.loadUsers().subscribe({
-      next: console.log,
-      error: (err) => {
-        console.error(`Error from app component ${err}`)
-      }
-    });
+    // this.userService.loadUsers().subscribe({
+    //   next: console.log,
+    //   error: (err) => {
+    //     console.error(`Error from app component ${err}`)
+    //   }
+    // });
+  }
+
+  reloadUsers(): void{
+    this.userService.loadUsers();
   }
 }
+
+
