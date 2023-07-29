@@ -3,6 +3,8 @@ import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { appEmailValidator } from 'src/app/shared/validators/email-validator';
 import { matchPasswordsValidator } from 'src/app/shared/validators/match-passwords-validator';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,16 +21,26 @@ export class RegisterComponent {
       password: ['', [Validators.required], Validators.minLength(5)],
       repass: ['', [Validators.required]]
     },
-    {
-      validators: [matchPasswordsValidator('password', 'repass')]
-    })
+      {
+        validators: [matchPasswordsValidator('password', 'repass')]
+      })
   })
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
 
   }
 
   register(): void {
-    if(this.form.invalid){return;}
-    console.log(this.form.value)
+    if (this.form.invalid) { return; }
+
+    const { 
+      username, 
+      email, 
+      tel, 
+      passGroup: {password, repass} = {}
+     } = this.form.value;
+
+    this.userService.register(username!, email!, tel!, password!, repass!).subscribe(() => {
+      this.router.navigate(['/login'])
+    })
   }
 }
