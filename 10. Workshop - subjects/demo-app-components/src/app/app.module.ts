@@ -15,6 +15,7 @@ import { UserModule } from './user/user.module';
 import { ThemeModule } from './theme/theme.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { appInteerceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ThemeModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [appInteerceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
