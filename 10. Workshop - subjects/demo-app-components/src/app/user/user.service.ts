@@ -35,14 +35,17 @@ export class UserService {
     tel: string
   ) {
 
-    return this.http.post('/api/register', { username, email, password, repass, tel })
+    return this.http
+    .post<User>('/api/register', { username, email, password, repass, tel })
+    .pipe(tap((user) => this.user$$.next(user)));
   }
 
 
 
-  logout(): void {
-    this.user = undefined;
-    localStorage.removeItem(USER_KEY);
+  logout(){
+    return this.http
+    .post<User>('/api/logout', { })
+    .pipe(tap(() => this.user$$.next(undefined)))
   }
 
 
