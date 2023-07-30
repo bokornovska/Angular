@@ -20,7 +20,8 @@ import { ErrorComponent } from './error/error.component';
   // which components to be exported from this module
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorComponent
   ]
 })
 export class CoreModule { }
