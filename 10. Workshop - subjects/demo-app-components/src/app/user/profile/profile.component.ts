@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
-import { appEmailValidator } from 'src/app/shared/validators/email-validator';
+// import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
+// import { appEmailValidator } from 'src/app/shared/validators/email-validator';
 import { UserService } from '../user.service';
 
 interface Profile {
@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit{
 
     this.userService.updateProfile(username!, email!, tel!).subscribe(() => {
     })
-    
+
     this.toggleEditMode();
   }
 
